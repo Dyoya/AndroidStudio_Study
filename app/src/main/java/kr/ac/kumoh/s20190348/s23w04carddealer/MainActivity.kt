@@ -10,5 +10,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         main = ActivityMainBinding.inflate(layoutInflater)
         setContentView(main.root)
+
+        main.card1.setImageResource(R.drawable.c_ace_of_hearts)
     }
 }
