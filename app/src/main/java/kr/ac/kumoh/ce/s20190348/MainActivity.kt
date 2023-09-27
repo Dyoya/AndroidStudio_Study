@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import kr.ac.kumoh.ce.s20190348.databinding.ActivityMainBinding
 
@@ -29,15 +30,17 @@ class MainActivity : AppCompatActivity() {
 //        txtNum[5] = main.num6
 
         model = ViewModelProvider(this)[LottoViewModel::class.java]
-        txtNum.forEachIndexed { index, textView ->
-            textView?.text = model.numbers[index].toString()
-        }
+
+        setNumbersText()
+
+        model.numbers.observe(this, Observer{
+            setNumbersText()
+            Log.i("Observer", "observer")
+        })
 
         main.btnGenerate.setOnClickListener {
             model.generate()
-            txtNum.forEachIndexed { index, textView ->
-                textView?.text = model.numbers[index].toString()
-            }
+            //setNumbersText()
 //            main.num1.text = model.numbers[0].toString()
 //            main.num2.text = model.numbers[1].toString()
 //            main.num3.text = model.numbers[2].toString()
@@ -45,6 +48,10 @@ class MainActivity : AppCompatActivity() {
 //            main.num5.text = model.numbers[4].toString()
 //            main.num6.text = model.numbers[5].toString()
         }
+    }
+
+    private fun setNumbersText() {
+        txtNum.forEachIndexed { index, textView -> textView?.text = model.numbers.value!![index].toString() }
     }
 
     override fun onStart() {

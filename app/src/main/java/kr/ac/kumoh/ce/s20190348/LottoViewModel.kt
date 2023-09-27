@@ -1,30 +1,31 @@
 package kr.ac.kumoh.ce.s20190348
 
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import kotlin.random.Random
 
 class LottoViewModel : ViewModel( ) {
-    //private var _numbers = intArrayOf(0, 0, 0, 0, 0, 0)
-    private var _numbers = IntArray(6) { 0 }
-    val numbers
+    private var _numbers = MutableLiveData<IntArray>(IntArray(6) { 0 })
+    val numbers: LiveData<IntArray>
         get() = _numbers
     fun generate() {
         var num = 0
-        for (i in _numbers.indices)
-            _numbers[i] = 0
-        for (i in _numbers.indices) {
-//            _numbers[i] = Random.nextInt(1, 46)
+        var newNumbers = IntArray(6) { 0 }
+        for (i in newNumbers.indices) {
             // 중복 검사
             do {
                 num = Random.nextInt(1, 46)
-            } while (_numbers.contains(num))
-            _numbers[i] = num
+            } while (newNumbers.contains(num))
+            newNumbers[i] = num
 
-            Log.i("Number!!!", _numbers[i].toString())
+            //Log.i("Number!!!", newNumbers[i].toString())
         }
 
         // 정렬
-        _numbers.sort()
+        newNumbers.sort()
+        
+        _numbers.value = newNumbers
     }
 }
