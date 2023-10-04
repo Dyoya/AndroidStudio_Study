@@ -16,14 +16,19 @@ class MainActivity : AppCompatActivity() {
         val card = Random.nextInt(52)
         Log.i("Card!!", "$card : ${getCardName(card)}")
 
-        //main.card1.setImageResource(R.drawable.c_ace_of_hearts)
         val res = resources.getIdentifier(
             getCardName(card),
             "drawable",
             packageName
         )
 
+        // TODO : 카드 랜덤으로 출력되도록
         main.card1.setImageResource(res)
+        main.card2.setImageResource(R.drawable.c_ace_of_hearts)
+        main.card3.setImageResource(R.drawable.c_ace_of_hearts)
+        main.card4.setImageResource(R.drawable.c_ace_of_hearts)
+        main.card5.setImageResource(R.drawable.c_ace_of_hearts)
+
     }
 
     private fun getCardName(c: Int) : String {
