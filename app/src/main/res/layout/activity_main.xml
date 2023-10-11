@@ -11,6 +11,7 @@
         android:id="@+id/card1"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_margin="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -47,7 +48,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/card5"
         app:layout_constraintTop_toBottomOf="@id/card2"
-        app:layout_constraintBottom_toTopOf="@id/btn" />
+        app:layout_constraintBottom_toTopOf="@id/text" />
 
     <ImageView
         android:id="@+id/card5"
@@ -58,16 +59,31 @@
         app:layout_constraintStart_toEndOf="@id/card4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/card3"
-        app:layout_constraintBottom_toTopOf="@id/btn" />
+        app:layout_constraintBottom_toTopOf="@id/text" />
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:textSize="32sp"
+        android:padding="16dp"
+        android:text="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card4"
+        app:layout_constraintBottom_toTopOf="@id/btn"
+        />
 
     <Button
         android:id="@+id/btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="카드 뽑기"
+        android:layout_margin="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/card4"
+        app:layout_constraintTop_toBottomOf="@id/text"
         app:layout_constraintBottom_toBottomOf="parent"
         />
 
