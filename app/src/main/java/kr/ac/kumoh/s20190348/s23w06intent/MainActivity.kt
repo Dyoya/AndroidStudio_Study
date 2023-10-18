@@ -18,6 +18,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.content.ContextCompat.startActivity
 import kr.ac.kumoh.s20190348.s23w06intent.ui.theme.S23W06IntentTheme
+import kr.ac.kumoh.s20190348.s23w06intent.ui.theme.SecondActivity
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -128,7 +129,19 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         ) {
             Text("SMS")
         }
+
+    Button(
+        onClick = {
+            val intent = Intent(context, SecondActivity::class.java)
+            intent.putExtra("sms_body", "전화 부탁드립니다.")
+            startActivity(context, intent, null)
+        },
+        modifier = modifier
+            .fillMaxWidth()
+    ) {
+        Text("Activity")
     }
+}
 }
 
 @Preview(showBackground = true)
