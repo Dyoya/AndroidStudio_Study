@@ -113,7 +113,9 @@ class CardViewModel : ViewModel() {
         }
 
         // 투페어 판별
-        val pairs = numberCounts.withIndex().filter { it.value == 2 } // 개수가 2개인 숫자를 모두 찾음
+        val pairs = numberCounts.withIndex().filter {
+            it.value == 2 // 개수가 2개인 숫자를 모두 찾아 배열로 저장
+        }
         if (pairs.size == 2) { // 개수가 2개인 숫자가 2가지라면
             val pair0 = getCardName(pairs[0].index) // 첫 번째 숫자
             val pair1 = getCardName(pairs[1].index) // 두 번째 숫자
