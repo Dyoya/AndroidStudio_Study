@@ -33,12 +33,14 @@ class MainActivity : AppCompatActivity() {
             main.card3.setImageResource(res[2])
             main.card4.setImageResource(res[3])
             main.card5.setImageResource(res[4])
+
+            main.text.setText(model.genealogy())
         })
 
         main.btn.setOnClickListener {
+            //model.test()
             model.shuffle()
-            // TODO : 족보 출력하기
-            main.text.setText("족보 출력")
+            main.text.setText(model.genealogy())
         }
     }
 

@@ -69,7 +69,7 @@
         android:layout_margin="8dp"
         android:textSize="32sp"
         android:padding="16dp"
-        android:text="text"
+        android:text="결과는 여기에 출력됩니다."
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/card1"
