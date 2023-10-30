@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.View.OnClickListener
 import android.widget.Toast
@@ -43,6 +44,8 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         
         main.btnMountain.setOnClickListener(this)
         main.btnSea.setOnClickListener(this)
+
+        Log.i("Lifecycle!!!", "onCreate")
     }
 
     override fun onClick(v: View?) {
@@ -65,5 +68,35 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         intent.putExtra(KEY_NAME, value)
         //startActivity(intent)
         startForResult.launch(intent)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.i("Lifecycle!!!", "onStart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.i("Lifecycle!!!", "onResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.i("Lifecycle!!!", "onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.i("Lifecycle!!!", "onStop")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.i("Lifecycle!!!", "onRestart")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.i("Lifecycle!!!", "onDestroy")
     }
 }
