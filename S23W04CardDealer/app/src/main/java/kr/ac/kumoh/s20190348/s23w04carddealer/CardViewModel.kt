@@ -10,7 +10,7 @@ class CardViewModel : ViewModel() {
     val cards: LiveData<IntArray>
         get() = _cards
 
-    private var cardsArray = intArrayOf()
+    private var cardsArray = IntArray(5) {-1}
 
     fun shuffle() {
         var num = 0
@@ -46,6 +46,12 @@ class CardViewModel : ViewModel() {
     }
 
     fun genealogy(): String {
+        // 초기 값이라면 안내 메세지 반환
+        if(cardsArray[0] == -1) {
+            return "아래 버튼을 눌러주세요"
+        }
+
+        // 숫자 및 문양 배열 선언
         val numberCounts = IntArray(13) { 0 }
         val suitCounts = IntArray(4) { 0 }
 
