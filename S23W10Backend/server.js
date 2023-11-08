@@ -1,11 +1,19 @@
 import express from "express"
 import mysql from "mysql"
-import dbconf from "./conf/auth.js"
+//import dbconf from "./conf/auth.js"
 
 const app = express()
 const port = 3000
 
-const db = mysql.createConnection(dbconf)
+//const db = mysql.createConnection(dbconf) //auth.js 사용시 사용
+
+const db = mysql.createConnection({
+    host: 'svc.sel5.cloudtype.app',
+    port: 30546,
+    user: 'root',
+    password: 'mysql1234',
+    database: 'songdb'
+})
 
 db.connect()
 
