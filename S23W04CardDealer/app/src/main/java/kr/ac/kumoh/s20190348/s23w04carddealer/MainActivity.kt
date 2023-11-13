@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         })
 
         main.btn.setOnClickListener {
-            //model.test()
+            //model.test() //테스트 함수, 활성화 시 model.shuffle() 주석 처리
             model.shuffle()
             main.text.setText(model.genealogy())
         }

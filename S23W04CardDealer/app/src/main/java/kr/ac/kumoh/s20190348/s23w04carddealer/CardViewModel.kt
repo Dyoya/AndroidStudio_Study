@@ -29,6 +29,7 @@ class CardViewModel : ViewModel() {
         cardsArray = newCards
     }
 
+    //스트레이트(마운틴) 테스트 함수
     fun test()
     {
         var newCards = IntArray(5) { -1 }
@@ -80,12 +81,8 @@ class CardViewModel : ViewModel() {
         }
 
         // 포카드 판별
-        if (numberCounts.contains(4)) { // 어떤 숫자가 4개가 있으면
-            for (i in 0 until numberCounts.size) { // A부터 2, 3, ..., K까지 반복
-                if (numberCounts[i] == 4) { // 4개인 숫자를 찾음
-                    return "${getCardName(i)} 포카드"
-                }
-            }
+        if (numberCounts.contains(4)) { // 어떤 숫자가 3개 있으면
+            return "${getCardName(numberCounts.indexOf(4))} 포카드"
         }
 
         // 풀하우스 판별
