@@ -19,6 +19,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -28,10 +29,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.ViewModelProvider
 import kr.ac.kumoh.s20190348.s23w1102composecounter.ui.theme.S23W1102ComposeCounterTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        val vm = ViewModelProvider(this)[CounterViewModel::class.java]
         super.onCreate(savedInstanceState)
         setContent {
             MyApp {
@@ -42,8 +45,8 @@ class MainActivity : ComponentActivity() {
                     verticalArrangement = Arrangement.Center,
                 ) {
                     Clicker()
-                    Counter()
-                    Counter()
+                    Counter(vm)
+                    Counter(vm)
                 }
             }
         }
@@ -89,8 +92,9 @@ fun Clicker() {
 }
 
 @Composable
-fun Counter() {
-    var countInt by rememberSaveable { mutableStateOf(0) }
+fun Counter(viewModel: CounterViewModel) {
+    //var countInt by rememberSaveable { mutableStateOf(0) }
+    val countInt by viewModel.count.observeAsState(0)
 
     Column(modifier = Modifier
         .fillMaxWidth()
@@ -105,7 +109,8 @@ fun Counter() {
             Button(modifier = Modifier
                 .weight(1f),
                 onClick= {
-                    countInt += 1
+                    //countInt += 1
+                    viewModel.onAdd()
                 }) {
                 Text("증가")
             }
@@ -113,13 +118,11 @@ fun Counter() {
             Button(modifier = Modifier
                 .weight(1f),
                 onClick = {
-                    countInt -= 1
+                    //countInt -= 1
+                    viewModel.onSub()
                 }) {
                 Text("감소")
             }
         }
-
-
-
     }
 }
