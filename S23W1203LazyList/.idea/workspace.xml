@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de44b507-8190-486d-8176-e68cd67f3bea" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../S23W1301SongList/app/src/main/java/kr/ac/kumoh/s20190348/s23w1301songlist/Song.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../S23W1301SongList/app/src/main/java/kr/ac/kumoh/s20190348/s23w1301songlist/SongApi.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../S23W1301SongList/app/src/main/java/kr/ac/kumoh/s20190348/s23w1301songlist/SongViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/kr/ac/kumoh/s20190348/s23w1203lazylist/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/kr/ac/kumoh/s20190348/s23w1203lazylist/MainActivity.kt" afterDir="false" />
-    </list>
+    <list default="true" id="de44b507-8190-486d-8176-e68cd67f3bea" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
