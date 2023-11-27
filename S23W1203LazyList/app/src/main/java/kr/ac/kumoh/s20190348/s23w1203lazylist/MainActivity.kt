@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -24,9 +25,19 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kr.ac.kumoh.s20190348.s23w1203lazylist.ui.theme.S23W1203LazyListTheme
 
+data class Song(var title: String, var singer: String)
+private val songs = mutableListOf<Song>()
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        repeat(10){
+            songs.add(Song("Promise", "뎁트"))
+            songs.add(Song("Yours", "데이몬스 이어"))
+            songs.add(Song("Way Back Home", "숀"))
+        }
+
         setContent {
             MyScreen()
         }
@@ -53,15 +64,15 @@ fun SingerText(title: String) {
     Text(title, fontSize = 20.sp)
 }
 @Composable
-fun SongItem(index: Int) {
+fun SongItem(song: Song) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .background(Color(0xffffffcc))
             .padding(16.dp)
     ) {
-        TitleText(title = "노래 $index")
-        SingerText("이 노래를 부른 가수는 $index 입니다.")
+        TitleText(title = "노래 ${song.title}")
+        SingerText("이 노래를 부른 가수는 ${song.singer} 입니다.")
     }
 }
 @Composable
@@ -70,8 +81,8 @@ fun MyList() {
         verticalArrangement = Arrangement.spacedBy(8.dp),
         contentPadding = PaddingValues(8.dp)
     ) {
-        items(40) {
-            SongItem(it)
+        items(songs) {song ->
+            SongItem(song)
         }
     }
 }
