@@ -5,5 +5,5 @@ data class Song(
     val title: String,
     val singer: String,
     val rating: Int,
-    val lyric: String,
+    val lyrics: String?,
 )
