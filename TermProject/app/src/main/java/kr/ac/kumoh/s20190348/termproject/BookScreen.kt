@@ -25,7 +25,12 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.outlined.AccountBox
+import androidx.compose.material.icons.outlined.FavoriteBorder
+import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -175,7 +180,7 @@ fun BookDetail(book: Book) {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        Text("장르 : ${book.genre}", fontSize = 30.sp)
+        RatingBar(book.rating)
 
         Spacer(modifier = Modifier.height(16.dp))
 
@@ -190,9 +195,11 @@ fun BookDetail(book: Book) {
         )
         Spacer(modifier = Modifier.height(16.dp))
 
+        Text("장르 : ${book.genre}", fontSize = 30.sp)
         Text("작가 : ${book.author}", fontSize = 30.sp)
+        Text("출판일 : ${book.publication_date}", fontSize = 24.sp)
 
-        Spacer(modifier = Modifier.height(32.dp))
+        Spacer(modifier = Modifier.height(16.dp))
 
         Button(
             onClick = {
@@ -219,6 +226,29 @@ fun BookDetail(book: Book) {
                 Spacer(modifier = Modifier.size(ButtonDefaults.IconSpacing))
                 Text("교보문고 검색")
             }
+        }
+    }
+}
+
+@Composable
+fun RatingBar(stars: Int)
+{
+    Row {
+        repeat(stars) {
+            Icon(
+                imageVector = Icons.Filled.Favorite,
+                contentDescription = "stars",
+                modifier = Modifier.size(32.dp),
+                tint = Color.Red
+            )
+        }
+        repeat(10-stars) {
+            Icon(
+                imageVector = Icons.Outlined.FavoriteBorder,
+                contentDescription = "stars",
+                modifier = Modifier.size(32.dp),
+                tint = Color.Red
+            )
         }
     }
 }
