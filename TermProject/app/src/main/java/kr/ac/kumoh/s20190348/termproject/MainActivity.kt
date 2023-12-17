@@ -32,6 +32,7 @@ fun MainScreen(viewModel: BookViewModel) {
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colorScheme.background
         ) {
+            // 화면 출력
             BookApp(bookList)
         }
     }

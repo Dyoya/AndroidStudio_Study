@@ -76,6 +76,7 @@ fun BookApp(bookList: List<Book>) {
         startDestination = BookScreen.List.name,
     ) {
         composable(route = BookScreen.List.name) {
+            // navController의 함수 전달
             BookList(bookList) {
                 navController.navigate(it)
             }
@@ -100,7 +101,9 @@ fun BookList(list: List<Book>, onNavigateToDetail: (String) -> Unit)
         verticalArrangement = Arrangement.spacedBy(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ){
+        // 리스트 제목 표시
         Text("2022년 베스트셀러!", fontSize = 30.sp, fontWeight = FontWeight.Bold)
+        // 메인 화면에서 표시할 책 리스트
         LazyColumn (
             verticalArrangement = Arrangement.spacedBy(16.dp),
             contentPadding = PaddingValues(horizontal = 8.dp)
@@ -114,6 +117,7 @@ fun BookList(list: List<Book>, onNavigateToDetail: (String) -> Unit)
 }
 
 @Composable
+// 메인 화면에서 표시할 책
 fun BookItem(index: Int, book: Book, onNavigateToDetail: (String) -> Unit)
 {
     Card(
@@ -130,6 +134,7 @@ fun BookItem(index: Int, book: Book, onNavigateToDetail: (String) -> Unit)
                 .padding(8.dp)
         ) {
             AsyncImage(
+                // DB에 있는 책 표지 이미지
                 model = "https://port-0-s23smartappproject-gj8u2llomircso.sel5.cloudtype.app/images/${book.id}.jpg",
                 contentDescription = "책 커버 이미지",
                 contentScale = ContentScale.Crop,
@@ -143,6 +148,7 @@ fun BookItem(index: Int, book: Book, onNavigateToDetail: (String) -> Unit)
                 modifier = Modifier.fillMaxSize(),
                 verticalArrangement = Arrangement.SpaceEvenly
             ) {
+                // 각 책마다 표시할 내용
                 TextTitle(book.title)
                 TextGenre(book.genre)
                 TextAuthor(book.author)
@@ -176,15 +182,18 @@ fun BookDetail(book: Book) {
             .verticalScroll(rememberScrollState()),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        // 제목 표시, 굵게
         Text(book.title, fontSize = 40.sp, textAlign = TextAlign.Center, lineHeight = 45.sp, fontWeight = FontWeight.Bold)
 
         Spacer(modifier = Modifier.height(16.dp))
 
+        // 평점 Composable
         RatingBar(book.rating)
 
         Spacer(modifier = Modifier.height(16.dp))
 
         AsyncImage(
+            // DB에 있는 책 표지 이미지
             model = "https://port-0-s23smartappproject-gj8u2llomircso.sel5.cloudtype.app/images/${book.id}.jpg",
             contentDescription = "책 커버 이미지",
             contentScale = ContentScale.Crop,
@@ -205,6 +214,7 @@ fun BookDetail(book: Book) {
             onClick = {
                 val intent = Intent(
                     Intent.ACTION_VIEW,
+                    // 교보문고 검색 링크
                     Uri.parse("https://search.kyobobook.co.kr/search?keyword=${book.title}")
                 )
                 startActivity(context, intent, null)
@@ -219,6 +229,7 @@ fun BookDetail(book: Book) {
                 verticalAlignment = Alignment.CenterVertically
             )
             {
+                // 검색 아이콘
                 Icon(
                     imageVector = Icons.Filled.Search,
                     contentDescription = null
@@ -231,9 +242,10 @@ fun BookDetail(book: Book) {
 }
 
 @Composable
-fun RatingBar(stars: Int)
+fun RatingBar(stars: Int) // 평점
 {
     Row {
+        // 채워진 하트
         repeat(stars) {
             Icon(
                 imageVector = Icons.Filled.Favorite,
@@ -242,6 +254,7 @@ fun RatingBar(stars: Int)
                 tint = Color.Red
             )
         }
+        // 빈 하트
         repeat(10-stars) {
             Icon(
                 imageVector = Icons.Outlined.FavoriteBorder,

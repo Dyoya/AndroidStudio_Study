@@ -17,6 +17,7 @@ class BookViewModel(): ViewModel() {
         get() = _bookList
 
     init {
+        // retrofit 사용해 서버에서 데이터 가져오기
         val retrofit = Retrofit.Builder()
             .baseUrl(SERVER_URL)
             .addConverterFactory(GsonConverterFactory.create())
